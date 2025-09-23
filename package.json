@@ -1,0 +1,44 @@
+{
+  "name": "@970design/vue-video-stream",
+  "version": "1.0.0",
+  "description": "A Vue component for Cloudflare Stream videos",
+  "author": "970Design <webmaster@970design.com> (https://970design.com)",
+  "license": "GNU General Public License v3.0",
+  "keywords": [
+    "cloudflare",
+    "stream",
+    "videos",
+    "hls",
+    "vue",
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/970Design/vue-video-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/970Design/vue-video-stream/issues"
+  },
+  "homepage": "https://github.com/970Design/vue-video-stream#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build"
+  },
+  "main": "./dist/vue-video-stream.umd.js",
+  "module": "./dist/vue-video-stream.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-video-stream.es.js",
+      "require": "./dist/vue-video-stream.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "hls.js": "^1.6.13",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.5",
+    "vue": "^3.5.21"
+  }
+}
