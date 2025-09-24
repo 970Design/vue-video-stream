@@ -2,13 +2,13 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import Hls from 'hls.js/dist/hls.js'
 
-const props = defineProps(['field']);
+const props = defineProps(['video']);
 const videoRef = ref(null);
 
-const muted = Boolean(Number(props.field.muted));
-const autoplay = Boolean(Number(props.field.autoplay));
-const controls = Boolean(Number(props.field.controls));
-const loop = Boolean(Number(props.field.loop));
+const muted = Boolean(Number(props.video.muted));
+const autoplay = Boolean(Number(props.video.autoplay));
+const controls = Boolean(Number(props.video.controls));
+const loop = Boolean(Number(props.video.loop));
 
 function validateUrl(url) {
   if (!url) return null;
@@ -20,8 +20,8 @@ function validateUrl(url) {
   }
 }
 
-const hls = validateUrl(props.field.hls);
-const thumbnail = validateUrl(props.field.thumbnail);
+const hls = validateUrl(props.video.hls);
+const thumbnail = validateUrl(props.video.thumbnail);
 
 function setupVideo(el) {
   if (!el) return;
