@@ -1,8 +1,12 @@
 {
   "name": "@970design/vue-video-stream",
-  "version": "1.0.2",
-  "description": "A Vue component for Cloudflare Stream videos",
-  "author": "970Design <webmaster@970design.com> (https://970design.com)",
+  "version": "1.0.3",
+  "description": "A Vue component for streaming HLS videos, like those provided by Cloudflare Stream.",
+  "author": {
+    "name": "TJ Szewczak",
+    "email": "webmaster@970design.com",
+    "url": "https://970design.com"
+  },
   "license": "Apache-2.0",
   "type": "module",
   "keywords": [
