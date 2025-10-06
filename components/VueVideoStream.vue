@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import Hls from 'hls.js/dist/hls.light.min.js'
+import Hls from 'hls.js'
 
 const props = defineProps(['video']);
 const videoRef = ref(null);
@@ -38,14 +38,13 @@ function setupVideo(el) {
   el.addEventListener('loadeddata', onLoad);
 
   if (Hls.isSupported()) {
-    hlsInstance = new Hls();
+    hlsInstance = new Hls({
+      enableWorker: false
+    });
     hlsInstance.loadSource(source);
     hlsInstance.attachMedia(el);
 
     hlsInstance.on(Hls.Events.ERROR, (event, data) => {
-      if (data.type === 'otherError'  && !data.fatal) {
-        return;
-      }
       console.error('HLS error:', data);
     });
   } else if (el.canPlayType('application/vnd.apple.mpegurl')) {

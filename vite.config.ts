@@ -10,12 +10,18 @@ export default defineConfig({
             fileName: (format) => `vue-video-stream.${format}.js`,
         },
         rollupOptions: {
-            external: ['vue'], // Exclude Vue from the bundle
+            external: ['vue'],
             output: {
                 globals: {
                     vue: 'Vue',
                 },
             },
         },
+        commonjsOptions: {
+            include: [/hls\.js/],
+        },
+    },
+    optimizeDeps: {
+        include: ['hls.js'],
     },
 });
