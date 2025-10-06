@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [vue()],
     build: {
         lib: {
-            entry: './components/VueVideoStream.vue', // Your library's entry point
+            entry: './components/VueVideoStream.vue',
             name: 'VueVideoStream',
             fileName: (format) => `vue-video-stream.${format}.js`,
         },

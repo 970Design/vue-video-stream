@@ -1,6 +1,6 @@
-# Vue Video Stream Component
+# Vue Video Stream
 
-A Vue 3 component that provides HLS (HTTP Live Streaming) video playback functionality using `hls.js`.
+Vue Video Stream is a [Vue](https://vuejs.org/) 3 component that provides HLS (HTTP Live Streaming) video playback functionality using [hls.js](https://github.com/video-dev/hls.js).
 
 ## Features
 
