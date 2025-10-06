@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import Hls from 'hls.js/dist/hls.light.min.js'
+import Hls from 'hls.js/dist/hls.js'
 
 const props = defineProps(['video']);
 const videoRef = ref(null);
