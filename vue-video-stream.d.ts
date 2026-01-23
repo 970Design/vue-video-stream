@@ -8,6 +8,8 @@ declare module '@970design/vue-video-stream' {
     controls?: boolean
     muted?: boolean
     loop?: boolean
+    playScrolledIntoView?: boolean
+
   }
 
   const VueVideoStream: DefineComponent<VideoStreamProps>
