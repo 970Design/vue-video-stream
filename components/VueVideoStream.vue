@@ -100,7 +100,7 @@ onMounted(() => {
   <video
       v-if="hls"
       ref="videoRef"
-      class="vue-stream-video "
+      class="vue-stream-video"
       :poster="thumbnail"
       :muted="muted"
       :loop="loop"
