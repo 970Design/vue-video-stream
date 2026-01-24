@@ -38,10 +38,8 @@ function setupVideo(el) {
       function handleIntersection(entries) {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            console.log('video in view');
             entry.target.play().catch(console.error);
           } else {
-            console.log('video out of view');
             entry.target.pause();
           }
         });
