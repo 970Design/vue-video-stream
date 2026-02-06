@@ -1,6 +1,6 @@
 {
   "name": "@970design/vue-video-stream",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A Vue component for streaming HLS videos, like those provided by Cloudflare Stream.",
   "author": {
     "name": "TJ Szewczak",
