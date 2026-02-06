@@ -4,11 +4,11 @@ import Hls from 'hls.js'
 
 const props = defineProps(['video']);
 const videoRef = ref(null);
-
 const muted = Boolean(Number(props.video.muted));
 const autoplay = Boolean(Number(props.video.autoplay));
 const controls = Boolean(Number(props.video.controls));
 const loop = Boolean(Number(props.video.loop));
+const play_scrolled_into_view = Boolean(Number(props.video.play_scrolled_into_view));
 
 function validateUrl(url) {
   if (!url) return null;
@@ -32,7 +32,30 @@ function setupVideo(el) {
   let hlsInstance = null;
 
   const onLoad = () => {
-    if (autoplay) el.play().catch(console.error);
+    if (autoplay && play_scrolled_into_view === false) el.play().catch(console.error);
+
+    if(play_scrolled_into_view) {
+      function handleIntersection(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.play().catch(console.error);
+          } else {
+            entry.target.pause();
+          }
+        });
+      }
+
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        scrollMargin: "0px",
+        threshold: 0.5,
+      };
+
+      const observer = new IntersectionObserver(handleIntersection, options);
+
+      observer.observe(el);
+    }
   }
 
   el.addEventListener('loadeddata', onLoad);
