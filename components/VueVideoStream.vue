@@ -4,7 +4,7 @@ import Hls from 'hls.js'
 
 const props = defineProps(['video']);
 const videoRef = ref(null);
-const muted = Boolean(Number(props.video.muted));
+const muted = play_scrolled_into_view || Boolean(Number(props.video.muted));
 const autoplay = Boolean(Number(props.video.autoplay));
 const controls = Boolean(Number(props.video.controls));
 const loop = Boolean(Number(props.video.loop));
@@ -35,12 +35,20 @@ function setupVideo(el) {
     if (autoplay && play_scrolled_into_view === false) el.play().catch(console.error);
 
     if(play_scrolled_into_view) {
+      let hasScrolledIn = false;
+
       function handleIntersection(entries) {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (!hasScrolledIn && entry.isIntersecting) {
+            hasScrolledIn = true;
+            return;
+          }
+
+          if (entry.isIntersecting && hasScrolledIn) {
             entry.target.play().catch(console.error);
-          } else {
+          } else if (!entry.isIntersecting) {
             entry.target.pause();
+            hasScrolledIn = true;
           }
         });
       }
