@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import Hls from 'hls.js'
 
-const props = defineProps(['video']);
+const props = defineProps(['video', 'hlsConfig']);
 const videoRef = ref(null);
 const play_scrolled_into_view = Boolean(Number(props.video.play_scrolled_into_view));
 const muted = play_scrolled_into_view || Boolean(Number(props.video.muted));
@@ -70,7 +70,9 @@ function setupVideo(el) {
 
   if (Hls.isSupported()) {
     hlsInstance = new Hls({
-      enableWorker: false
+      enableWorker: false,
+      capLevelToPlayerSize: true,
+      ...props.hlsConfig,
     });
     hlsInstance.loadSource(source);
     hlsInstance.attachMedia(el);

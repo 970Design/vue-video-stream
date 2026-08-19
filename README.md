@@ -46,6 +46,26 @@ npm install @970design/vue-video-stream
 | controls   | String   | Show video controls ('0' or '1')      | '0'/'1'   |
 | loop       | String   | Enable video loop ('0' or '1')        | '0'/'1'   |
 
+### hls-config
+
+An optional second prop, `hls-config`, is merged over the component's hls.js defaults
+(`enableWorker: false`, `capLevelToPlayerSize: true`) and passed to the `Hls`
+constructor. Use it to tune playback for a specific context — any
+[hls.js config option](https://github.com/video-dev/hls.js/blob/master/docs/API.md#fine-tuning)
+is accepted. For example, an ambient looping background video can be kept to a small
+buffer and a low starting rendition so it doesn't compete with the rest of the page:
+
+```vue
+<VueVideoStream
+  :video="video"
+  :hls-config="{
+    maxBufferLength: 8,
+    maxMaxBufferLength: 15,
+    startLevel: 0
+  }"
+/>
+```
+
 ## Integrations
 
 If you're using this package in a headless WordPress project with ACF, check out the companion [ACF Field Plugin](https://github.com/970Design/nsz-design-video-field) that makes it easy to integrate Cloudflare Stream videos with your Vue front-end.
